@@ -1,0 +1,14 @@
+{
+    "name": ".NET Env w/ PostgreSQL",
+	"dockerComposeFile": "docker-compose.yml",
+	"postCreateCommand": "sudo apt-get update && sudo apt-get upgrade -y",
+    "service": "vscode",
+	"workspaceFolder": "/workspace/${localWorkspaceFolderBasename}",
+    "forwardPorts": [5432,5050],
+    "customizations": {
+		"vscode": {
+			"extensions": ["ms-dotnettools.vscode-dotnet-pack"]
+		}
+	}
+    // "remoteUser": "root"
+}

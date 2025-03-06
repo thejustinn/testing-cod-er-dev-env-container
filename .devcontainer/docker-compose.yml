@@ -1,0 +1,44 @@
+services:
+  vscode:
+    image: mcr.microsoft.com/vscode/devcontainers/dotnet:9.0-noble
+    command: sleep infinity
+    volumes:
+      - ../..:/workspace:cached
+      
+  postgres:
+    image: postgres:latest
+    restart: unless-stopped
+    volumes:
+      - psql-data:/tmp/dev/pgsql/data
+    env_file:
+        - .env
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    env_file:
+        - .env
+    volumes:
+      - pga-data:/tmp/dev/pga/data
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+  
+  flyway:
+    image: flyway/flyway:latest
+    env_file:
+      - .env
+    command: -url=jdbc:postgresql://postgres:5432/mydatabase -user=${POSTGRES_USER} -locations=filesystem:/flyway/sql -password=${POSTGRES_PASSWORD} migrate
+    volumes:
+      - ../sql:/flyway/sql
+    depends_on:
+      - postgres
+
+
+volumes:
+  psql-data:
+  pga-data:
