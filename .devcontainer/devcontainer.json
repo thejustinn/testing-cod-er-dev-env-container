@@ -1,6 +1,6 @@
 {
     "name": ".NET Dev Env",
-	"postCreateCommand": "/bin/sh -c ${PROJECT_FOLDER_FULL_PATH}/.devcontainer/postgres.sh",
+	"postCreateCommand": "/bin/sh ${PROJECT_FOLDER_FULL_PATH}/.devcontainer/postgres.sh",
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
