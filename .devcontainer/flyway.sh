@@ -1,0 +1,1 @@
+flyway -url=jdbc:postgresql://localhost:5432/${POSTGRES_DB} -user=${POSTGRES_USER} -locations=filesystem:${PROJECT_FOLDER_FULL_PATH}/sql -password=${POSTGRES_PASSWORD} migrate

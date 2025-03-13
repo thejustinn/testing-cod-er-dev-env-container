@@ -1,0 +1,6 @@
+FROM mcr.microsoft.com/vscode/devcontainers/dotnet:9.0-noble
+RUN apt-get update && apt-get upgrade -y
+
+# CMD flyway -url=jdbc:postgresql://postgres:5432/${POSTGRES_DB} -user=${POSTGRES_USER} -locations=filesystem:./sql -password=${POSTGRES_PASSWORD} migrate
+
+USER vscode
