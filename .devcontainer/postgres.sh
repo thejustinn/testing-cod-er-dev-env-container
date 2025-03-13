@@ -12,6 +12,7 @@ sudo -u postgres psql -c "CREATE USER $POSTGRES_USER WITH PASSWORD '$POSTGRES_PA
 
 echo "Granting privileges to user: $POSTGRES_USER on database: $POSTGRES_DB..."
 sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $POSTGRES_DB TO $POSTGRES_USER;"
+sudo -u postgres psql -c "GRANT ALL ON SCHEMA public TO $POSTGRES_USER;"
 
 echo "PostgreSQL initialized."
 
